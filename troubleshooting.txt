@@ -1,0 +1,13 @@
+Debugging Pods
+
+# https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/
+
+$ kubectl describe pods ${POD_NAME}
+$ kubectl logs ${POD_NAME} ${CONTAINER_NAME}
+$ kubectl logs --previous ${POD_NAME} ${CONTAINER_NAME}
+$ kubectl exec ${POD_NAME} -c ${CONTAINER_NAME} -- ${CMD} ${ARG1} ${ARG2} ... ${ARGN}
+$ kubectl exec cassandra -- cat /var/log/cassandra/system.log
+# kubectl create --validate -f mypod.yaml
+# kubectl get pods/mypod -o yaml > mypod-on-apiserver.yaml and then manually compare the original pod description, mypod.yaml with the one you got back from apiserver, mypod-on-apiserver.yaml
+$ kubectl describe rc ${CONTROLLER_NAME}
+$ kubectl get endpoints ${SERVICE_NAME}
